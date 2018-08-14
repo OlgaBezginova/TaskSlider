@@ -53,4 +53,3 @@ slider.addEventListener('click', function(event){
         image.setAttribute('src', `img/${image.dataset.index}.jpg`);
     }
 });
-
