@@ -22,11 +22,35 @@ arrowRight.classList.add('arrow-right');
 arrowRight.classList.add('fas');
 arrowRight.classList.add('fa-angle-right');
 
-image.setAttribute('src', 'img/00.jpg');
+const imageNumber = 6;
+image.dataset.index = 0;
+image.setAttribute('src', `img/${image.dataset.index}.jpg`);
 
-
-
-
-
-
+slider.addEventListener('click', function(event){
+    if(!event || !event.target || !event.target.classList.contains('arrow')) {
+        return;   
+    }
+    
+    let imageIndex = +image.dataset.index;
+    
+    if(event.target.classList.contains('arrow-right')) {
+        if(imageIndex < imageNumber - 1) {
+            imageIndex++;
+        } else {
+            imageIndex = 0;
+        }
+        image.dataset.index = imageIndex;
+        image.setAttribute('src', `img/${image.dataset.index}.jpg`);
+    }
+    
+    if(event.target.classList.contains('arrow-left')) {
+        if(imageIndex > 0) {
+            imageIndex--;
+        } else {
+            imageIndex = imageNumber - 1;
+        }
+        image.dataset.index = imageIndex;
+        image.setAttribute('src', `img/${image.dataset.index}.jpg`);
+    }
+});
 
